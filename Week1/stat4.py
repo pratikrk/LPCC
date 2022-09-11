@@ -32,50 +32,43 @@ EMOT = {'STOP':('00',1),
             'ANY':('07',5)
             }
 
-file=open("F:\Pratik\python\LPCC1\input.txt")  #Enter input file with complete path if not in same directory
+file=open("F:\Pratik\python\LPCC1\input.txt")  
   
 
 symtab={}   #Sybol Table
 words=[]
 
-#prints symbol table
+#sym table
 def symbol():
     global symtab
     print("Symbol Table:")
     print(symtab)
-
-#handles END directive        
+   
 def END():
     global LC
     pool=0
     z=0
 
-#handles LTORG mnemonic
 def LTORG():
     global LC
     pool=0
     z=0
     
-#handles ORIGIN mnemonic
 def ORIGIN(addr):
     global LC
   
     LC =int(addr)
 
-#handles DS mnemonic
 def DS(size):
     global LC
   
     LC=LC+int(size)
 
-#handles DC mnemonic
 def DC(value):
     global LC
   
     LC+=1
-
-
-#identifies type of operands i.e. registers, literals, symbols and add approprite data in symbol table.   
+   
 def OTHERS(mnemonic,k):
     global words
     global EMOT   
@@ -85,8 +78,6 @@ def OTHERS(mnemonic,k):
 
     i=0
     y=z[-1]
-    # print("y="+str(y))
-
     LC+=1
  
 
